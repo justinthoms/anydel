@@ -29,7 +29,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 @Client.on_message(Filters.sticker)
 async def DownloadStickersBot(bot, update):
-    if update.from_user.id not in AUTH_USERS:
+    if update.from_user.id in AUTH_USERS:
         await update.delete()
         return
 
