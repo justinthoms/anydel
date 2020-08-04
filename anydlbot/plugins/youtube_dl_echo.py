@@ -36,7 +36,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 @Client.on_message(Filters.regex(pattern=".*http.*"))
 async def echo(bot, update: Message):
-    if update.from_user.id not in AUTH_USERS:
+    if update.from_user.id in AUTH_USERS:
         await update.delete()
         return
     # LOGGER.info(update)
