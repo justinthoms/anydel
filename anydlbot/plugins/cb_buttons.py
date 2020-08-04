@@ -23,7 +23,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 @Client.on_callback_query()
 async def button(bot, update: CallbackQuery):
-    if update.from_user.id not in AUTH_USERS:
+    if update.from_user.id in AUTH_USERS:
         await update.message.delete()
         return
     # LOGGER.info(update)
