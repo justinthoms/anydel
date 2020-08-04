@@ -27,7 +27,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 @Client.on_message(Filters.photo)
 async def save_photo(bot, update):
-    if update.from_user.id not in AUTH_USERS:
+    if update.from_user.id in AUTH_USERS:
         await bot.delete_messages(
             chat_id=update.chat.id,
             message_ids=update.message_id,
@@ -52,7 +52,7 @@ async def save_photo(bot, update):
 
 @Client.on_message(Filters.command(["deletethumbnail"]))
 async def delete_thumbnail(bot, update):
-    if update.from_user.id not in AUTH_USERS:
+    if update.from_user.id in AUTH_USERS:
         await bot.delete_messages(
             chat_id=update.chat.id,
             message_ids=update.message_id,
